@@ -86,7 +86,9 @@ Ensure the router is powered on and reachable via SSH:
 
 ```bash
 chmod +x deploy.sh
-./deploy.sh 192.168.2.1
+./deploy.sh                  # Defaults to 192.168.1.1
+# or specify a custom IP:
+./deploy.sh 192.168.1.1
 ```
 
 This script will:
@@ -99,10 +101,10 @@ This script will:
 
 ```bash
 # 1. Copy the module to the router
-scp -O mac_se30_link.ko root@192.168.2.1:/etc/
+scp -O mac_se30_link.ko root@192.168.1.1:/etc/
 
 # 2. SSH into the router
-ssh root@192.168.2.1
+ssh root@192.168.1.1
 
 # 3. Load the module
 insmod /etc/mac_se30_link.ko

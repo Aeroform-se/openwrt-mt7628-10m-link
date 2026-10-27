@@ -4,3 +4,7 @@
 *.order
 *.symvers
 .*.cmd
+
+# Design notes & briefs
+Brief.rtf
+*.rtf

@@ -1,7 +1,18 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROUTER_IP="${1:-192.168.2.1}"
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+    echo "Usage: $0 [ROUTER_IP] [ROUTER_USER]"
+    echo "  ROUTER_IP:   Target router IP address (default: 192.168.1.1)"
+    echo "  ROUTER_USER: SSH username (default: root)"
+    echo ""
+    echo "Example:"
+    echo "  $0                 # Deploys to root@192.168.1.1"
+    echo "  $0 192.168.1.100   # Deploys to root@192.168.1.100"
+    exit 0
+fi
+
+ROUTER_IP="${1:-192.168.1.1}"
 ROUTER_USER="${2:-root}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MODULE_NAME="mac_se30_link.ko"
